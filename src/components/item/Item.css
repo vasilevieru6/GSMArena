@@ -1,6 +1,18 @@
-.CadsMedia {
-    margin-left: 300px;
+.ContentPage {
+    width: calc(100% - 300px);
+    /* display: flex; */
+    /* top: 0; */
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
+    overflow: hidden;
+}
+
+.TablePagination {
+    float: right;
+}
+
+.Cards {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    top: 0;
+    flex-wrap: wrap;
 }
