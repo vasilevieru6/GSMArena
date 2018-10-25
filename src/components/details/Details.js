@@ -1,10 +1,42 @@
 import React from 'react';
-import Item from '../../components/item/Item';
+import Data from '../../data/phone-dataset.json';
 
-export class Details extends React.Component {
-    render() {
-        return(
-            <Item />
-        );
-    }
+
+// const styles = {
+//     card: {
+//         maxWidth: 300,
+//         width: 300,
+//         margin: 20,
+//         height: 500,
+//         minWidth: 300
+//     },
+//     media: {
+//         height: 400,
+//     },
+// }
+
+function  fillBrands(brandModel) {
+    let phoneDetails = null;
+    Data.forEach(element => {
+        if(element.model === brandModel){
+            phoneDetails = element;
+        }
+    });
+    return  phoneDetails;
 }
+
+
+
+export function Details(props) {
+
+    const details = fillBrands(props.item);
+    
+    return(
+        <div className="ItemDetails">
+            <img src={details.img_url} alt={details.brand}/>
+            <p>{details.model}</p>
+        </div>
+    );
+}
+
+export default Details;

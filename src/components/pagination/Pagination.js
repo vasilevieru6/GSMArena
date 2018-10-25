@@ -20,12 +20,12 @@ export function TablePaginationActions(props) {
           backIconButtonProps={{
             'aria-label': 'Previous Page',
           }}
+          rowsPerPageOptions={[10]}
           nextIconButtonProps={{
             'aria-label': 'Next Page',
           }}
-          onChangePage={(e) => props.onHandleNextPage(e, props.page)}
-        />
-    
+          onChangePage={(e, p) => {props.onHandleChangePage(e, p)}}
+        />    
     );
 }
 

@@ -69,10 +69,7 @@ const styles = theme => ({
   },
 });
 
-const menu = ['Samsung', 'Nokia', 'LG', 'Sony'];
-const list = menu.map((item) =>
-    <a href="" key={item.toString()}>{item}</a>
-);
+
 
 export function SearchAppBar(props) {
   const { classes } = props;
@@ -81,13 +78,8 @@ export function SearchAppBar(props) {
       <AppBar position="static">
         <Toolbar>      
           <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            Material-UI
+            GSMARENA
           </Typography>
-          <nav className="Navigation-menu">
-                            <Typography variant="title" color="inherit">
-                                {list}
-                            </Typography>
-          </nav>
           <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>

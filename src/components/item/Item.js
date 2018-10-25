@@ -9,6 +9,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import Data from '../../data/phone-dataset.json';
 import './Item.css';
 import Pagination from '../pagination/Pagination.js';
+import { Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const styles = {
     card: {
@@ -26,7 +28,7 @@ const styles = {
 function fillBrands(brand) {
     const phones = [];
     Data.forEach(element => {
-        if(element.brand === brand){
+        if (element.brand === brand) {
             phones.push(element);
         }
     });
@@ -38,32 +40,31 @@ function Item(props) {
     const { classes } = props;
     const phones = props.brand ? fillBrands(props.brand) : Data;
     const cardArray = phones.slice(10 * props.page, 10 * props.page + 10).map(phone => (
-        <Card className={classes.card} key={phone.model.toString()}>
-            <CardActionArea>
-                <CardMedia className={classes.media}
-                           image={phone.img_url}
-                           title={phone.brand} />
-                <CardContent>
-                    <Typography component="p">
-                        {phone.model}
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
-        </Card>
+        <Link to={`${phone.brand}/${phone.model}`}>
+            <Card className={classes.card} key={phone.model.toString()}>
+                <CardActionArea onClick={() => props.onClickItem(phone.model)}>
+                    <CardMedia className={classes.media}
+                        image={phone.img_url}
+                        title={phone.brand} />
+                    <CardContent>
+                        <Typography component="p">
+                            {phone.model}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+        </Link>
     ));
 
     return (
-
-
         <div className="ContentPage">
-            <div className="Cards">
-                {cardArray}
-            </div>
-            <div className="Pagination">
-                <Pagination onHandleNextPage={props.onHandleNextPage} page={props.page} count={props.count}/>
-            </div>
+                <div className="Cards">
+                    {cardArray}
+                </div>
+                <div className="Pagination">
+                    <Pagination onHandleChangePage={props.onHandleChangePage} page={props.page} count={props.count} />
+                </div>
         </div>
-
     );
 }
 
