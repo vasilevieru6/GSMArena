@@ -1,6 +1,4 @@
-.ContentPage {
-    width: calc(100% - 300px);
-    /* display: flex; */
+.ContentPage {    /* display: flex; */
     /* top: 0; */
     /* flex-wrap: wrap; */
     /* flex-direction: row; */
@@ -12,7 +10,5 @@
 }
 
 .Cards {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    
 }

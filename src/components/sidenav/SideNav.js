@@ -8,10 +8,12 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import './SideNav.css';
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
     width: '100%',
+
   },
   grow: {
     flexGrow: 1,
@@ -71,36 +73,48 @@ const styles = theme => ({
 
 
 
-export function SearchAppBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>      
-          <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            GSMARENA
+export class SearchAppBar extends React.Component {
+
+  handleChange(e) {
+    const currentUrl = this.props.location.pathname;
+    this.props.history.push(currentUrl + '?search=' + e.target.value)
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+              GSMARENA
           </Typography>
-          <div className={classes.grow} />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+            <div className={classes.grow} />
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                onChange={(e) => {this.handleChange(e)
+                }
+                  
+                }
+              />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
 SearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SearchAppBar);
+export default withStyles(styles)(withRouter(SearchAppBar));

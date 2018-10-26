@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import './SideBar.css'
 import Data from '../../data/phone-dataset.json';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const onlyBrands = phones =>
     phones.reduce((acc, phone) => {
@@ -19,18 +19,18 @@ export class SideBar extends React.Component {
 
     render() {
         return (
-            <div className='SideBar'>
+            <div className='SideBar'> 
                 <List
-                    component="nav">
+                    component="nav" >
                     {brandsKeys.map((brand) => (
-                        <Link to={brand} key={brand}>  
-                                <ListItem key={brand} button onClick={() => this.props.onClick(brand, brands[brand])}>
-                                    <ListItemText primary={brand + '(' + brands[brand] + ')'} />
-                                </ListItem>
-                        </Link>     
-                        ))}
+                            <ListItem key={brand} button onClick={e => this.props.history.push('/' + brand)}>
+                                <ListItemText primary={brand + '(' + brands[brand] + ')'} />
+                            </ListItem>
+                    ))}
                 </List>
             </div>
         );
     }
 }
+
+export default withRouter(SideBar);

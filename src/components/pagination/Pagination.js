@@ -11,6 +11,7 @@ const actionsStyles = theme => ({
 });
 
 export function TablePaginationActions(props) {
+  console.log(props)
     return (
       <TablePagination
           component="div"

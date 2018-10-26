@@ -1,0 +1,15 @@
+.Details {
+    display: flex;
+    justify-content: center;
+}
+
+/* .Image {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+} */
+img{
+    width: 300px;
+    height: 400px;
+}

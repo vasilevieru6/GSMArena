@@ -8,3 +8,7 @@
     width: 100%;
     height: 100%;
 }
+
+.ContentPage {    
+    width: calc(100% - 300px);
+}
