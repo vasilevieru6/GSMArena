@@ -21,7 +21,10 @@ export class SideBar extends React.Component {
         return (
             <div className='SideBar'> 
                 <List
-                    component="nav" >
+                    component="nav">
+                    <ListItem key="all" button onClick={e => this.props.history.push('/all')}>
+                        <ListItemText primary={"All("+ Data.length + ")"}/>
+                    </ListItem>
                     {brandsKeys.map((brand) => (
                             <ListItem key={brand} button onClick={e => this.props.history.push('/' + brand)}>
                                 <ListItemText primary={brand + '(' + brands[brand] + ')'} />

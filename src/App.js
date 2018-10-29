@@ -20,9 +20,10 @@ export class App extends React.Component {
                             <div className="ContentPage">
                                 <Switch>
                                     <Route exact path="/" component={Items} />
+                                    <Route exact path='/all' component={Items}/>
                                     <Route exact path='/:brand' component={Items} />
                                     <Route exact path='/:brand/:model' component={Details} />
-                                    <Route path='/:brand?search=' component={Items}/>
+                                    <Route exact path='/all?search=' component={Items}/>
                                 </Switch>
                             </div>
                         </div>

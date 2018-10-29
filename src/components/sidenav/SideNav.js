@@ -75,9 +75,8 @@ const styles = theme => ({
 
 export class SearchAppBar extends React.Component {
 
-  handleChange(e) {
-    const currentUrl = this.props.location.pathname;
-    this.props.history.push(currentUrl + '?search=' + e.target.value)
+  handleChange(e) {    
+    this.props.history.push('all?search=' + e.target.value)
   }
 
   render() {
@@ -87,7 +86,10 @@ export class SearchAppBar extends React.Component {
         <AppBar position="static">
           <Toolbar>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              GSMARENA
+              <i className="material-icons">smartphone</i>
+              <i className="material-icons">tablet</i>
+              <i className="material-icons">watch</i>
+              &nbsp;GSMARENA
           </Typography>
             <div className={classes.grow} />
             <div className={classes.search}>

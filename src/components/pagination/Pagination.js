@@ -11,7 +11,6 @@ const actionsStyles = theme => ({
 });
 
 export function TablePaginationActions(props) {
-  console.log(props)
     return (
       <TablePagination
           component="div"
@@ -29,12 +28,5 @@ export function TablePaginationActions(props) {
         />    
     );
 }
-
-TablePaginationActions.propTypes = {
-  // count: PropTypes.number.isRequired,
-  // page: PropTypes.number.isRequired,
-  // rowsPerPage: PropTypes.number.isRequired,
-};
-
 
 export default withStyles(actionsStyles)(TablePaginationActions);

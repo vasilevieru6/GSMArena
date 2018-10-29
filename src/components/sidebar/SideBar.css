@@ -1,4 +1,7 @@
 .SideBar {
     max-width: 300px;
     width: 300px;
+    overflow-y: auto;
+    margin-bottom: 70px;
+    width: 100%;
 }

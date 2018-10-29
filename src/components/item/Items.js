@@ -45,11 +45,9 @@ export class Item extends React.Component {
         this.handleClickItem = this.handleClickItem.bind(this);
     }
 
-    handleClickBrand(newBrand, count) {
+    handleClickBrand(count) {
         this.setState({
-            count: count,
-            clickItem: false,
-            item: null
+            count: count
         });
     }
 
@@ -75,22 +73,20 @@ export class Item extends React.Component {
     }
 
     fillBrands(brand) {
-        const phones = [];
-        Data.forEach(element => {
-            if (element.brand === brand) {
-                phones.push(element);
-            }
-        });
-
+        let phones = [];
+        let search = this.props.location.search.slice(8);
+        phones = brand ? Data.filter(x => x.brand === brand) : search ? Data.filter(x => x.model.includes(search)) : Data;
         return phones;
+    }
+
+    allBrands() {
+
     }
 
     render() {
         const brand = this.props.match.params.brand;
-        const devices = brand ? this.fillBrands(brand) : Data;
-        const search = this.props.location.search;
-        
-        search ? console.log("Search " + devices.filter(x => x.model === search.slice(8)).map(x => console.log(x))) : console.log("nimic")
+        const url = this.props.match.url;
+        const devices = brand || url === '/all' ? this.fillBrands(brand) : Data;
         const {classes} = this.props;
         return (
             <div>
